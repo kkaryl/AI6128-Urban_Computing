@@ -16,6 +16,40 @@ class MagneticData():
         self.y_pos = float(self.y_pos)
         self.m_strength = float(self.m_strength)
 
+def get_waypoints(txt_path: str, xy_only = True, augment_wp=False):
+    wp = []
+
+    # for waypoint augmentation using accelerometer and rotation vector
+    accel = []
+    rotate = []
+
+    # parse text file
+    with open(txt_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+        for line in lines:
+            line = line.strip()
+            if not line or line[0] == '#':
+                continue
+
+            line_data = line.split('\t')
+            if line_data[1] == 'TYPE_WAYPOINT':
+                # Unix Time, X Pos, Y Pos
+                wp.append([int(line_data[0]), float(line_data[2]), float(line_data[3])])
+            elif augment_wp and line_data[1] == 'TYPE_ACCELEROMETER':
+                # Unix Time, X axis, Y axis, Z axis
+                accel.append([int(line_data[0]), float(line_data[2]), float(line_data[3]), float(line_data[4])])
+            elif augment_wp and line_data[1] == 'TYPE_ROTATION_VECTOR':
+                # Unix Time, X axis, Y axis, Z axis
+                rotate.append([int(line_data[0]), float(line_data[2]), float(line_data[3]), float(line_data[4])])
+
+    wp = np.array(wp)
+
+    if augment_wp:
+        # get more waypoints using accelerator and rotation position data
+        accel, rotate = np.array(accel), np.array(rotate)
+        wp = compute_step_positions(accel, rotate, wp)  # compute_f function
+
+    return wp[:,1:] if xy_only else wp
 
 def get_magnetic_positions(txt_path: str, augment_wp=False):
     mg, wp = [], []
@@ -47,6 +81,7 @@ def get_magnetic_positions(txt_path: str, augment_wp=False):
                 rotate.append([int(line_data[0]), float(line_data[2]), float(line_data[3]), float(line_data[4])])
 
     mg, wp = np.array(mg), np.array(wp)
+    ori_mg_count = len(mg)
     if augment_wp:
         # get more waypoints using accelerator and rotation position data
         accel, rotate = np.array(accel), np.array(rotate)
@@ -68,8 +103,8 @@ def get_magnetic_positions(txt_path: str, augment_wp=False):
             m_str = np.mean(np.sqrt(np.sum(m_time_data ** 2, axis=1)))
             m_agg_data[3] = m_str
         wp_magnetic.append(m_agg_data)
-
-    return wp_magnetic
+    wp_count = len(wp_magnetic)
+    return wp_magnetic, ori_mg_count, wp_count
 
 
 # if __name__ == '__main__':

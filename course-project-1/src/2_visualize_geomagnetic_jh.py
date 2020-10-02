@@ -56,9 +56,13 @@ def visualize_geomagnetic(site, floor, save_dir=None, save_dpi=160, augment_wp=F
     floor_data_path = os.path.join(floor_path, config.PATH_DATA_DIR)
     file_list = os.listdir(floor_data_path)
     floor_magnetic_data = np.zeros((0, 3))
+    total_waypoints = 0
+    total_mg = 0
     for filename in file_list:
         txt_path = os.path.join(floor_data_path, filename)
-        magnetic_data = get_magnetic_positions(txt_path, augment_wp)
+        magnetic_data, ori_mg_count, wp_count = get_magnetic_positions(txt_path, augment_wp)
+        total_mg += ori_mg_count
+        total_waypoints += wp_count
         magnetic_wp_str = np.array(magnetic_data)[:, 1:4].astype(float)
         floor_magnetic_data = np.append(floor_magnetic_data, magnetic_wp_str, axis=0)
 
@@ -69,6 +73,8 @@ def visualize_geomagnetic(site, floor, save_dir=None, save_dpi=160, augment_wp=F
     map_height, map_width = map_info['height'], map_info['width']
 
     img = mpimg.imread(os.path.join(floor_path, config.FLOOR_IMAGE_FILE))
+    reversed_color_map = plt.cm.get_cmap('inferno').reversed()
+
     plt.clf()
     plt.imshow(img)
     map_scaler = (img.shape[0] / map_height + img.shape[1] / map_width) / 2
@@ -77,18 +83,26 @@ def visualize_geomagnetic(site, floor, save_dir=None, save_dpi=160, augment_wp=F
     m_strength = floor_magnetic_data[:, 2]
 
     if m_range:
-        plt.scatter(x, y, c=m_strength, s=10, vmin=m_range[0], vmax=m_range[1])
+        plt.scatter(x, y, c=m_strength, s=10, vmin=m_range[0], vmax=m_range[1], cmap=reversed_color_map)
     else:
-        plt.scatter(x, y, c=m_strength, s=10)
-    plt.colorbar()
+        plt.scatter(x, y, c=m_strength, s=10, cmap=reversed_color_map)
+    plt.colorbar(cmap=reversed_color_map)
     plt.xticks((np.arange(25, map_width, 25) * map_scaler).astype('uint'),
                np.arange(25, map_width, 25).astype('uint'))
     plt.yticks((img.shape[0] - np.arange(25, map_height, 25) * map_scaler).astype('uint'),
                np.arange(25, map_height, 25).astype('uint'))
-    plt.tight_layout()
+    # plt.tight_layout()
+
+    if not augment_wp:
+        plt.title(f"{site} - {floor} -- {total_mg} Mag: Ori {total_waypoints} Waypoints".title())
+    else:
+        plt.title(f"{site} - {floor} -- {total_mg} Mag: Aug {total_waypoints} Waypoints".title())
 
     if save_dir:
-        save_path = os.path.join(save_dir, site + "--" + floor)
+        if augment_wp:
+            save_path = os.path.join(save_dir, site + "--" + floor)
+        else:
+            save_path = os.path.join(save_dir, site + "--" + floor + "--" + "O")
         plt.savefig(save_path, dpi=save_dpi)
     else:
         plt.show()
