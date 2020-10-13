@@ -48,6 +48,12 @@ A real-world case study: smartphone-based indoor localization
 + Jupyter 
 + Scikit-Learn
 
+Otherwise, use the following Anaconda command to setup your environment:
+
+```shell
+conda env create --file env/ai6128uc_p1.yml
+```
+
 
 ## Source Files
 + E1 - src/1_visualize_waypoints.py
