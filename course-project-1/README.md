@@ -38,5 +38,19 @@ A real-world case study: smartphone-based indoor localization
 + Study the performance improvement brought by integrating temporal relationship via SLAM.
 + Any other claimable.
 
+## Pre-requisites
++ Python
++ Matplotlib
++ Numpy
++ Seaborn
++ Pandas
++ PyTorch
++ Jupyter 
++ Scikit-Learn
 
 
+## Source Files
++ E1 - src/1_visualize_waypoints.py
++ E2 - src/2_visualize_geomagnetic.py
++ E3 - src/2_visualize_rss.py
++ B1 - src/maintrain_final.ipynb
