@@ -2,7 +2,7 @@ import os
 import numpy as np
 from collections import defaultdict
 import random
-from samplecode.compute_f import compute_step_positions
+from sample_codes.compute_f import compute_step_positions
 
 
 inf = float('inf')
