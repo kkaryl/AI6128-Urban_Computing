@@ -6,6 +6,7 @@ import numpy as np
 import random
 from collections import defaultdict
 from data import get_data_from_one_txt
+import config
 
 
 def wifi_print(site, floor, savepath=None, cbarange=None, selectmethod='random 3'):
@@ -99,7 +100,8 @@ def wifi_print(site, floor, savepath=None, cbarange=None, selectmethod='random 3
 
 if __name__ == "__main__":
     # wifi_print('site1', 'F1', savepath='./wifipictest', cbarange=(-90, -45), selectmethod='input')
-    save_dir = './savedPicture/wifi'
+    save_dir = os.path.join(config.OUTPUT_DIR, os.path.splitext(os.path.basename(__file__))[0])
+    #save_dir = './savedPicture/wifi'
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
     for site, floor in [('site1', 'B1'), ('site1', 'F1'), ('site1', 'F2'), ('site1', 'F3'), ('site1', 'F4'),
@@ -109,3 +111,4 @@ if __name__ == "__main__":
         print(site, '   ---------   ', floor)
         save_path = os.path.join(save_dir, site + '--' + floor)
         wifi_print(site, floor, save_path)
+    print("Done")
