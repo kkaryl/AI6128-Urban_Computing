@@ -36,7 +36,7 @@ train1000 = []
 with open("./data/train-1000.csv","r") as csvfile:
     reader = csv.reader(csvfile)
     for line in reader:
-        train1000.append(line[8])
+        train1000.append(line[8]) #POLYLINES
 
 results = []
 for t_number in range(1,1001):

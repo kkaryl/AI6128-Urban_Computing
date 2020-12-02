@@ -49,7 +49,7 @@ def plot_GPS_point_from_trajectory(t_number, color, G, savepath=None, lines=Fals
 if __name__ == '__main__':
     train1000 = pd.read_csv('../../data/train-1000.csv')
 
-    gdf_nodes, gdf_edges = read_N_and_E('data/porto')
+    gdf_nodes, gdf_edges = read_N_and_E('../../data/porto')
     G = ox.utils_graph.graph_from_gdfs(gdf_nodes, gdf_edges)
     # map_xlim, map_ylim = ax.get_xlim(), ax.get_ylim()
 
