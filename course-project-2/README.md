@@ -40,5 +40,5 @@ Note that for Task 3 codes, please follow installation guide from [FMM](https://
 ## References
 
 + [Fast Map Matching](https://github.com/cyang-kth/fmm): Map Matching Algorithm by Can Yang and Gyozo Gidofalvi
-+ [Folium](https://github.com/python-visualization/folium): Used to plot plots on maps.
-+ [OSMNX](https://github.com/gboeing/osmnx): Visualization tool
++ [Folium](https://github.com/python-visualization/folium): Used to plot trajectories on maps.
++ [OSMNX](https://github.com/gboeing/osmnx): Visualization tool, download road network .
