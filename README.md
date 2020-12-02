@@ -9,5 +9,5 @@
 ## Projects
 
 + Project 1 - Indoor Localization
-+ Project 2 - Not Released
++ Project 2 - Trajectory and Road Network Data Analysis
 
