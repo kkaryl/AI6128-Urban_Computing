@@ -3,20 +3,20 @@ import csv
 from fmm import FastMapMatch,Network,NetworkGraph,UBODTGenAlgorithm,UBODT,FastMapMatchConfig
 from fmm import Network,NetworkGraph,STMATCH,STMATCHConfig
 
-network = Network("./data/Porto/edges.shp","fid", "u", "v")
+network = Network("../../data/Porto/edges.shp","fid", "u", "v")
 print "Nodes {} edges {}".format(network.get_node_count(),network.get_edge_count())
 graph = NetworkGraph(network)
 
 
-if os.path.isfile("./data/Porto/ubodt.txt"):
-    ubodt = UBODT.read_ubodt_csv("./data/Porto/ubodt.txt")
+if os.path.isfile("../../data/Porto/ubodt.txt"):
+    ubodt = UBODT.read_ubodt_csv("../../data/Porto/ubodt.txt")
     print 'read the ubodt file'
 else:
     print 'generate and read the ubodt file'
     ubodt_gen = UBODTGenAlgorithm(network,graph)
-    status = ubodt_gen.generate_ubodt("./data/Porto/ubodt.txt", 0.03, binary=False, use_omp=True)
+    status = ubodt_gen.generate_ubodt("../../data/Porto/ubodt.txt", 0.03, binary=False, use_omp=True)
     print status
-    ubodt = UBODT.read_ubodt_csv("./data/Porto/ubodt.txt")
+    ubodt = UBODT.read_ubodt_csv("../../data/Porto/ubodt.txt")
 
 fmm_model = FastMapMatch(network,graph,ubodt)
 k = 16
@@ -33,7 +33,7 @@ factor = 1.5
 stmatch_config = STMATCHConfig(k, radius, gps_error, vmax, factor)
 
 train1000 = []
-with open("./data/train-1000.csv","r") as csvfile:
+with open("../../data/train-1000.csv","r") as csvfile:
     reader = csv.reader(csvfile)
     for line in reader:
         train1000.append(line[8]) #POLYLINES
@@ -54,7 +54,7 @@ for t_number in range(1,1001):
         ))
 
 # cpath, opath, offset, length, spdist, mgeom
-with open("./data/match_result.csv","w") as csvfile:
+with open("../../data/match_result.csv","w") as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(["t_number", "cpath", "opath", "offset", "length", "spdist", "mgeom"])
 

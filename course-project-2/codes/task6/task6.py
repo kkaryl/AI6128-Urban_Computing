@@ -7,7 +7,7 @@ import math
 
 def distance(p1, p2):
     return math.sqrt((p1[0]-p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
-train1000 = pd.read_csv('./data/train-1000.csv')
+train1000 = pd.read_csv('../../data/train-1000.csv')
 consecutive_dis = []
 
 def list2string(L):
@@ -31,7 +31,7 @@ plt.hist(x = consecutive_dis,
     range=(0,0.02)
     )
 
-plt.savefig('./savedpictures/task6/distribution', dpi=240)
+plt.savefig('../../results/task6/distribution', dpi=240)
 
 
 # outliar modifying
@@ -60,6 +60,6 @@ for t_number in range(1000):
                 threshold = min(threshold, threshold_max)
         train1000['POLYLINE'][t_number] = list2string(modified_points)
 
-train1000.to_csv('./data/modified_train-1000.csv',index=0)
+train1000.to_csv('../../data/modified_train-1000.csv',index=0)
     
 

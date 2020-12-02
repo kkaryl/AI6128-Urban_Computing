@@ -151,9 +151,9 @@ def five_most_time(results, ignore_log_number=10, ignore_log_rate=1.5):
     return fid_time_lognumber
 
 
-gdf_nodes, gdf_edges = read_N_and_E('data/Porto')
+gdf_nodes, gdf_edges = read_N_and_E('../../data/Porto')
 G = ox.utils_graph.graph_from_gdfs(gdf_nodes, gdf_edges)
-match_results = pd.read_csv('./data/match_result.csv')
+match_results = pd.read_csv('../../data/match_result.csv')
 
 all_results = []
 ignore_number = 0
@@ -205,6 +205,6 @@ else:
 ax.set_xlim(x_mid - x_gap, x_mid + x_gap)
 ax.set_ylim(y_mid - y_gap, y_mid + y_gap)
 
-fig.savefig('./savedpictures/task5/most5_freq&time.png', dpi=320)
+fig.savefig('../../results/task5/most5_freq_time.png', dpi=320)
 
 plt.show()

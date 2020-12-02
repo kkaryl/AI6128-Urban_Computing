@@ -54,7 +54,7 @@ if __name__ == '__main__':
     # map_xlim, map_ylim = ax.get_xlim(), ax.get_ylim()
 
     for t_number, color in enumerate(('red', 'blue', 'orange', 'yellow', 'green', 'grey', 'pink', 'purple', 'cyan', 'olive')):
-        plot_GPS_point_from_trajectory(t_number+1, color=color, G=G, savepath=f'./savedpictures/task2/GPS{t_number+1}.png', lines=LINES)
+        plot_GPS_point_from_trajectory(t_number+1, color=color, G=G, savepath=f'../../results/task2/GPS{t_number+1}.png', lines=LINES)
 
     fig, ax = ox.plot_graph(G, node_size=1.5, figsize=(40, 40), edge_linewidth=0.5, show=False)
     # plt.xlim(*map_xlim)
@@ -67,4 +67,4 @@ if __name__ == '__main__':
         else:
             ax.scatter(x, y, c=color, marker='x',s=3)
 
-    plt.savefig('./savedpictures/task2/GPSall.png', dpi=320)
+    plt.savefig('../../results/task2/GPSall.png', dpi=320)
