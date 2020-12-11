@@ -27,15 +27,15 @@ A real-world case study: smartphone-based indoor localization.
 
 1. Visualize way points (ground-truth locations)
 
-   ![site1--B1](README.assets/site1--B1.png)
+   
 
 2. Visualize geomagnetic heatmap
 
-   ![site1--B1](README.assets/site1--B1-1607676174337.png)
+   
 
 3. Visualize RSS heat maps of 3 Wi-Fi APs
 
-   ![0a-74-9c-2e-da-9b](README.assets/0a-74-9c-2e-da-9b.png)
+   
 
 ## Bonus Tasks
 
@@ -43,6 +43,22 @@ A real-world case study: smartphone-based indoor localization.
 + Study the performance improvement brought by multi-modal machine learning.
 + Study the performance improvement brought by integrating temporal relationship via SLAM.
 + Any other claimable.
+
+
+
+## Sample Result Visualizations
+
+### Task 1 (Waypoint Visualization)
+
+![site1--B1](README.assets/site1--B1.png)
+
+### Task 2 (Geomagnetic Heatmap Visualization)
+
+![site1--B1](README.assets/site1--B1-1607676174337.png)
+
+### Task 3 (RSS Heatmap Visualization)
+
+![0a-74-9c-2e-da-9b](README.assets/0a-74-9c-2e-da-9b.png)
 
 ## Pre-requisites
 + Python

@@ -41,7 +41,7 @@ Members:
 
 ### Task 6 (Improvement)
 
-![fmap_route_all](results/task6/fmap_route_all.png)
+![fmap_route_all](README.assets/fmap_route_all-1607676616748.png)
 
 ## How to Setup Environment
 
