@@ -23,6 +23,26 @@ Members:
 + Task 6 (bonus and optional): Case studies
   + If possible, identify those cases where the map matching algorithm do not work well, think of some solutions for the identified cases and implement the new ideas into the open source tools and perform the map matching task on the trajectory data again and compare the mapped routes before and after the changes are made.
 
+## Sample Result Visualization
+
+### Task 2 (GPS points)
+
+![fmap_gps_all](README.assets/fmap_gps_all.png)
+
+### Task 4 (Trajectories after Map Matching)
+
+![fmap_route_all](README.assets/fmap_route_all.png)
+
+### Task 5 (Most Often, Longest Time)
+
+![fmap_often5_all](README.assets/fmap_often5_all.png)
+
+![fmap_time5_all](README.assets/fmap_time5_all.png)
+
+### Task 6 (Improvement)
+
+![fmap_route_all](results/task6/fmap_route_all.png)
+
 ## How to Setup Environment
 
 1. Install [Anaconda](https://docs.anaconda.com/anaconda/install/) environment.

@@ -1,6 +1,6 @@
 # AI6128 - Course Project 1
 
-A real-world case study: smartphone-based indoor localization
+A real-world case study: smartphone-based indoor localization.
 
 ## Members
 
@@ -26,10 +26,16 @@ A real-world case study: smartphone-based indoor localization
 ## Essential Tasks (100%)
 
 1. Visualize way points (ground-truth locations)
+
+   ![site1--B1](README.assets/site1--B1.png)
+
 2. Visualize geomagnetic heatmap
+
+   ![site1--B1](README.assets/site1--B1-1607676174337.png)
+
 3. Visualize RSS heat maps of 3 Wi-Fi APs
 
-
+   ![0a-74-9c-2e-da-9b](README.assets/0a-74-9c-2e-da-9b.png)
 
 ## Bonus Tasks
 

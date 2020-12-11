@@ -9,6 +9,7 @@ data/*.graphml
 cache/
 report/
 results/*
+.ignore/
 
 
 *.log
